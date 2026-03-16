@@ -1,6 +1,8 @@
 # Impulse
 
-My attempt to develop a ctrldev for the [Novation Impulse 61](https://novationmusic.com/impulse)
+My attempt to develop a Zynthian [ctrldev](https://wiki.zynthian.org/index.php/Ctrldev) for the [Novation Impulse 61](https://novationmusic.com/impulse)
+
+[Claude](https://claude.ai/new) by anthropic helped a lot 
 
 ![](assets/Impulse61.png)
 
@@ -17,9 +19,8 @@ amidi -l
 
 ```
 
-Should give you the id to be used in the **dev_ids**  of the code, but at least in my case it didn't work.
-However, looking in the configuratino of the Zynthian, (see image below, you get the correct id, namely **Impulse IN 1**
-
+Should give you the id to be used in the **dev_ids**  in the following code, but at least in my case, it didn't work.
+However, looking at the configuration of the Zynthian (see image below), you get the correct id, namely **Impulse IN 1**
 
 ![](assets/id.png)
 
@@ -92,10 +93,10 @@ Mar 08 17:28:11 zynthian startx[12826]: WARNING:zynthian_ctrldev_impulse.midi_ev
 
 ## Change chain e transport
 
-I use the keyboard to practice the songs we play in our group. To this purpose I need two main features: 
+I use the keyboard to practice the songs we play in our group. To this purpose, I need two main features: 
 
-1. Change quickly the chain by the Impulse buttons
-2. Control the playing of the traces I use to practice by the play/stop etc buttons on the Impulse
+1. Change the chain quickly with the Impulse buttons
+2. Control the playing of the tracks I use to practice by the play/stop, etc. buttons on the Impulse
 
 ![](assets/Impulse61_note.png)
 
