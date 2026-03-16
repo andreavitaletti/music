@@ -1,11 +1,31 @@
 # Impulse
 
-![](/assets/image-2026382726945.png)
+My attempt to develop a ctrldev for the [Novation Impulse 61](https://novationmusic.com/impulse)
+
+![](assets/Impulse61.png)
+
+The code is located in the folder **/zynthian/zynthian-ui/zyngine/ctrldev** of your Zynthian. 
+You can access it via SSH on zynthian.local
+
+Assuming you name your ctrldev **zynthian_ctrldev_impulse**, you have to store it in the file **zynthian_ctrldev_impulse.py**
+under **/zynthian/zynthian-ui/zyngine/ctrldev**
+
+```
+
+aconnect -i 
+amidi -l
+
+```
+
+Should give you the id to be used in the **dev_ids**  of the code, but at least in my case it didn't work.
+However, looking in the configuratino of the Zynthian, (see image below, you get the correct id, namely **Impulse IN 1**
 
 
-cd /zynthian/zynthian-ui/zyngine/ctrldev
+![](assets/id.png)
 
-file: zynthian_ctrldev_impulse.py
+The basic code to intercept midi event from the keyboard is the following: 
+
+**NOTE: unroute_from_chains = False** is necessary to deliver the midi events to the chains.
 
 ```python
 
@@ -44,12 +64,17 @@ class zynthian_ctrldev_impulse(zynthian_ctrldev_base):
 
 ```
 
+To check whether the driver has been loaded you have to restart the zynthian service and 
+then observe the logs as shown below:
+
 ```
 systemctl restart zynthian
 journalctl -f | grep Impulse
 ```
 
-![image-2026382644317.png](/assets/image-2026382644317.png)
+Zynthian admin tells you whether the driver is correctly loaded (see the little keyboard icon)
+
+![](/assets/driver.png)
 
 ```
 (venv) root@zynthian:~# journalctl -f | grep Impulse
@@ -65,10 +90,17 @@ Mar 08 17:28:11 zynthian startx[12826]: WARNING:zynthian_ctrldev_impulse.midi_ev
 
 ```
 
-## Cambio chain e transport
+## Change chain e transport
 
+I use the keyboard to practice the songs we play in our group. To this purpose I need two main features: 
 
-![](assets/Impulse61.png)
+1. Change quickly the chain by the Impulse buttons
+2. Control the playing of the traces I use to practice by the play/stop etc buttons on the Impulse
+
+![](assets/Impulse61_note.png)
+
+The following code is my first implementation of these features.  
+
 ```python
 from zyngine.ctrldev.zynthian_ctrldev_base import zynthian_ctrldev_base
 import logging
