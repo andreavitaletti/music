@@ -75,7 +75,7 @@ journalctl -f | grep Impulse
 
 Zynthian admin tells you whether the driver is correctly loaded (see the little keyboard icon)
 
-![](/assets/driver.png)
+![](assets/driver.png)
 
 ```
 (venv) root@zynthian:~# journalctl -f | grep Impulse
