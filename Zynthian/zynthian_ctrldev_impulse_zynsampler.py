@@ -3,7 +3,7 @@ import logging
 from zyngine.ctrldev.zynthian_ctrldev_base import zynthian_ctrldev_base
 
 
-class zynthian_ctrldev_impulse(zynthian_ctrldev_base):
+class zynthian_ctrldev_impulse_zynsampler(zynthian_ctrldev_base):
     dev_ids = ["Impulse IN 1", "Impulse  Impulse ", "Impulse  Impulse MIDI In "]
 
     # ADD THIS LINE:
